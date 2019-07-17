@@ -34,7 +34,8 @@ export class GoogleApiService {
       this.loading = false;
     });
   }
-  dataSub(url:string){
+  search(url:string){
+    console.log(url)
     this.http.get(url).subscribe((data) => {
       this.data = data;
       console.log(this.data)
@@ -43,9 +44,16 @@ export class GoogleApiService {
   mresults(num : number){
     this.maxResult = num;
   }
-  qtitle(title:string):string {
-    return this.baseURL+title+"&maxResult=40";
+  queryBuild(query:string,queryType:string):string {
+    return this.baseURL+queryType+":"+query+"&maxResult=40"+"startIndex=0";
   }
-
+  // showMore(){
+  //   this.booksService.search(this.search this.searchResults.items.length).subscribe
+  //   console.log(data)
+  //   this.searchResults.items.push(...this.data.items);
+  // }, (error) => {
+  //   console.log(error)
+  // }
+  // }
 }
 
