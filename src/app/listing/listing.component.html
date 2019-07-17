@@ -1,0 +1,22 @@
+<input [(ngModel)]="book" placeholder="type book" #ctrl="ngModel" required />
+<p>Value: {{ book }}</p>
+<p>Valid: {{ ctrl.valid }}</p>
+<button (click)='googleApiService.dataSub(googleApiService.qtitle(book))'>search</button>
+
+<div *ngIf="googleApiService.data; then data else loading"></div>
+<ng-template #data>
+  <div *ngFor="let book of googleApiService.data.items">
+    <div class= "product" *ngIf="book.saleInfo.listPrice">
+      <p>Titre : {{ book.volumeInfo.title }} </p>
+      <p>Auteur : {{book.volumeInfo.authors[0]}}</p>
+      <p>Prix : {{ book.saleInfo.listPrice.amount}} €</p>
+      <p>Id : {{ book.id }}</p>
+      <img [src]="book.volumeInfo.imageLinks.smallThumbnail" alt="">
+      <button >add to cart</button>
+      <button >details</button>
+
+
+    </div>
+  </div>
+</ng-template>
+<ng-template #loading> Loading...</ng-template>
