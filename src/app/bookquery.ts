@@ -4,6 +4,8 @@ export class Bookquery {
   sortType:string;
   maxResults:string;
   startIndex:string;
+  currentIndex:number;
+  isbn:string;
   id: number;
   title: string;
   author: string;

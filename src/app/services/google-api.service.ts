@@ -50,13 +50,6 @@ export class GoogleApiService {
   queryBuildIsbn(isbnCode:string):string{
     return this.baseURL+"isbn:"+isbnCode;
   }
-  // showMore(){
-  //   this.booksService.search(this.search this.searchResults.items.length).subscribe
-  //   console.log(data)
-  //   this.searchResults.items.push(...this.data.items);
-  // }, (error) => {
-  //   console.log(error)
-  // }
-  // }
+
 }
 

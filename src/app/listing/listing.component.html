@@ -36,6 +36,7 @@
     <p>No results</p>
   </div>
   <p> {{googleApiService.data.totalItems}} results :</p>
+  <!-- start of single book result -->
   <div *ngFor="let data of googleApiService.data.items">
     <div class= "product"> <!-- if book in sales, then display it-->
       <p>Titre : {{ data.volumeInfo.title }} </p>
@@ -50,5 +51,7 @@
 
     </div>
   </div>
+  <!-- end of single book result -->
+  <p (click)="nextPage()" >next page</p>
 </ng-template>
 <ng-template #loading> Loading...</ng-template>
