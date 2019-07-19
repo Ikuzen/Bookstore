@@ -37,8 +37,9 @@
   </div>
   <p> showing {{book.currentIndex+1}} out of {{googleApiService.data.totalItems}} results</p>
 
-  <p (click)="nextPage()" >next page</p>
-
+  <a *ngIf="book.currentIndex>1" (click)="previousPage()" >previous page </a>
+  <a *ngIf="book.currentIndex<googleApiService.data.totalItems-10" (click)="nextPage()" >next page </a>
+  
   <!-- start of single book result -->
   <div *ngFor="let data of googleApiService.data.items">
     <div class= "product"> <!-- if book in sales, then display it-->
@@ -55,6 +56,8 @@
   </div>
   <!-- end of single book result -->
   <p> showing {{book.currentIndex+1}} out of {{googleApiService.data.totalItems}} results</p>
-  <p (click)="nextPage()" >next page</p>
+  <a *ngIf="book.currentIndex>1" (click)="previousPage()" >previous page </a>
+  <a *ngIf="book.currentIndex<(googleApiService.data.totalItems-10)" (click)="nextPage()" >next page </a>
+
 </ng-template>
 <ng-template #loading> Loading...</ng-template>

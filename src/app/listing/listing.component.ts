@@ -24,6 +24,7 @@ export class ListingComponent implements OnInit {
     this.book.price = data.saleInfo.listPrice.amount;
   }
   searchBtn(queryType):void{
+    this.book.currentIndex = 0;
     this.book.savedToSearch = this.book.toSearch
     if(queryType === 'isbn'){
       this.googleApiService.search(this.googleApiService.queryBuildIsbn(this.book.toSearch))
@@ -46,8 +47,27 @@ export class ListingComponent implements OnInit {
       this.book.currentIndex += 40;
     }
   }
+  indexDecrementer(maxResults):void{
+    if(maxResults === '&maxResults=10'){
+      this.book.currentIndex -= 10;
+    }
+    else if(maxResults === '&maxResults=20'){
+      this.book.currentIndex -= 20;
+    }
+    else if(maxResults === '&maxResults=30'){
+      this.book.currentIndex -= 30;
+    }
+    else if(maxResults === '&maxResults=40'){
+      this.book.currentIndex -= 40;
+    }
+  }
   nextPage(){
     this.indexIncrementer(this.book.maxResults)
+    this.book.startIndex = `&startIndex=${this.book.currentIndex}`
+    this.googleApiService.search(this.googleApiService.queryBuild(this.book.savedToSearch,this.book.qType,this.book.sortType,this.book.maxResults,this.book.startIndex))}
+
+previousPage(){
+    this.indexDecrementer(this.book.maxResults)
     this.book.startIndex = `&startIndex=${this.book.currentIndex}`
     this.googleApiService.search(this.googleApiService.queryBuild(this.book.savedToSearch,this.book.qType,this.book.sortType,this.book.maxResults,this.book.startIndex))}
 }
