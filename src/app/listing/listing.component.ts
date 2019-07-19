@@ -9,10 +9,11 @@ import {Bookquery} from '../bookquery'
 export class ListingComponent implements OnInit {
   book:Bookquery = new Bookquery;
   // allBooks:Bookquery = []
-  constructor(private googleApiService : GoogleApiService) { }
+  constructor(public googleApiService : GoogleApiService) { }
 
   ngOnInit() {
     this.book.author = "Alice";
+    this.book.startIndex = '&startIndex=0'
   }
   fetchInfos(data):void{
     this.book.author = data.volumeInfo.authors[0];
@@ -21,5 +22,15 @@ export class ListingComponent implements OnInit {
     this.book.smallThumbnail = data.volumeInfo.imageLinks.smallThumbnail;
     this.book.price = data.saleInfo.listPrice.amount;
   }
+  searchBtn(queryType){
+    if(queryType === 'isbn'){
+      this.googleApiService.search(this.googleApiService.queryBuildIsbn(this.book.toSearch))
+    }
+    else{
+      this.googleApiService.search(this.googleApiService.queryBuild(this.book.toSearch,this.book.qType,this.book.sortType,this.book.maxResults,this.book.startIndex))
+    }
+  }
+  nextPage(){
 
+  }
 }

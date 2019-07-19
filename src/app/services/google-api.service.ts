@@ -9,7 +9,7 @@ import {finalize,delay} from 'rxjs/operators'
 })
 export class GoogleApiService {
 
-  baseURL:string ="https://www.googleapis.com/books/v1/volumes?q=";
+  private baseURL:string ="https://www.googleapis.com/books/v1/volumes?q=";
   newURL:string = this.baseURL;
   maxResult:number = 20;
   data = null;
@@ -44,8 +44,11 @@ export class GoogleApiService {
   mresults(num : number){
     this.maxResult = num;
   }
-  queryBuild(query:string,queryType:string):string {
-    return this.baseURL+queryType+":"+query+"&maxResult=40"+"startIndex=0";
+  queryBuild(query:string,queryType:string,sortType:string,maxResults:string,startIndex:string):string {
+    return this.baseURL+queryType+":"+query+maxResults+sortType+startIndex;
+  }
+  queryBuildIsbn(isbnCode:string):string{
+    return this.baseURL+"isbn:"+isbnCode;
   }
   // showMore(){
   //   this.booksService.search(this.search this.searchResults.items.length).subscribe

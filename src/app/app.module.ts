@@ -9,6 +9,10 @@ import { ListingComponent } from './listing/listing.component';
 import { DetailComponent } from './detail/detail.component';
 import {HttpClientModule} from '@angular/common/http';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +24,15 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatCheckboxModule
   ],
+  exports:[
+
+  ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
