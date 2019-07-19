@@ -24,6 +24,7 @@ export class ListingComponent implements OnInit {
     this.book.price = data.saleInfo.listPrice.amount;
   }
   searchBtn(queryType):void{
+    this.book.savedToSearch = this.book.toSearch
     if(queryType === 'isbn'){
       this.googleApiService.search(this.googleApiService.queryBuildIsbn(this.book.toSearch))
     }
@@ -48,6 +49,5 @@ export class ListingComponent implements OnInit {
   nextPage(){
     this.indexIncrementer(this.book.maxResults)
     this.book.startIndex = `&startIndex=${this.book.currentIndex}`
-    this.searchBtn(this.book.qType)
-  }
+    this.googleApiService.search(this.googleApiService.queryBuild(this.book.savedToSearch,this.book.qType,this.book.sortType,this.book.maxResults,this.book.startIndex))}
 }

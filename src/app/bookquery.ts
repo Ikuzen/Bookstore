@@ -1,5 +1,6 @@
 export class Bookquery {
   toSearch:string;
+  savedToSearch:string;
   qType:string;
   sortType:string;
   maxResults:string;

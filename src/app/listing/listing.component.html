@@ -35,15 +35,17 @@
   <div *ngIf="googleApiService.data.totalItems == 0">
     <p>No results</p>
   </div>
-  <p> {{googleApiService.data.totalItems}} results :</p>
+  <p> showing {{book.currentIndex+1}} out of {{googleApiService.data.totalItems}} results</p>
+
+  <p (click)="nextPage()" >next page</p>
+
   <!-- start of single book result -->
   <div *ngFor="let data of googleApiService.data.items">
     <div class= "product"> <!-- if book in sales, then display it-->
-      <p>Titre : {{ data.volumeInfo.title }} </p>
-      <p>Auteur : {{data.volumeInfo.authors[0]}}</p>
+      <p>Titre : {{ data.volumeInfo.title || 'unavailable' }} </p>
+      <p>Auteur : {{data.volumeInfo.authors ||'unavailable'}}</p>
       <p>Prix : {{ data.saleInfo.listPrice?.amount || "not for sale"}} € </p>
-      <p>Genre : {{ data.volumeInfo.</p>
-      <p>Id : {{ data.id }}</p>
+      <p>Id : {{ data.id || 'unavailable'}}</p>
       <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
       <button >add to cart</button>
       <i class="fas fa-shopping-cart"></i>
@@ -52,6 +54,7 @@
     </div>
   </div>
   <!-- end of single book result -->
+  <p> showing {{book.currentIndex+1}} out of {{googleApiService.data.totalItems}} results</p>
   <p (click)="nextPage()" >next page</p>
 </ng-template>
 <ng-template #loading> Loading...</ng-template>
