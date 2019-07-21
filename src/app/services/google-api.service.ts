@@ -12,7 +12,9 @@ export class GoogleApiService {
   private baseURL:string ="https://www.googleapis.com/books/v1/volumes?q=";
   newURL:string = this.baseURL;
   maxResult:number = 20;
-  data = null;
+  public data = null;
+  public dataIndex = -1;
+  public dataId;
   loading = true;
   error =  null;
   
@@ -50,6 +52,5 @@ export class GoogleApiService {
   queryBuildIsbn(isbnCode:string):string{
     return this.baseURL+"isbn:"+isbnCode;
   }
-
 }
 

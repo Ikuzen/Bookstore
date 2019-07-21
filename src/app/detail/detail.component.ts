@@ -8,10 +8,10 @@ import { GoogleApiService } from '../services/google-api.service';
 })
 export class DetailComponent implements OnInit {
   data:any;
-  constructor(public googleApiService : GoogleApiService) { }
+  constructor(public googleApiService:GoogleApiService) { }
 
   ngOnInit() {
-    this.data = this.googleApiService.data
+    this.data = this.googleApiService.data;
   }
 
 }
