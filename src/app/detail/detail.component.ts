@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleApiService } from '../services/google-api.service';
 
 @Component({
   selector: 'app-detail',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-
-  constructor() { }
+  data:any;
+  constructor(public googleApiService : GoogleApiService) { }
 
   ngOnInit() {
+    this.data = this.googleApiService.data
   }
 
 }

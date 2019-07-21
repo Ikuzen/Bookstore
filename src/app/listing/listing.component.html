@@ -46,12 +46,13 @@
     <div class= "product"> <!-- if book in sales, then display it-->
       <p>Titre : {{ data.volumeInfo.title || 'unavailable' }} </p>
       <p>Auteur : {{data.volumeInfo.authors ||'unavailable'}}</p>
-      <p>Prix : {{ data.saleInfo.listPrice?.amount || "not for sale"}} € </p>
-      <p>Id : {{ data.id || 'unavailable'}}</p>
       <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
+      <p>Id : {{ data.id || 'unavailable'}}</p>
+      <p>Rating : {{(data.volumeInfo.averageRating) || 'unavailable'}}</p>
+      <p>Prix : {{ data.saleInfo.listPrice?.amount || "not for sale"}} € </p>
       <button >add to cart</button>
       <i class="fas fa-shopping-cart"></i>
-      <button routerLink ="/detail/{{data.id}}">details</button>
+      <button (click)="saveId(data.id)" routerLink ="/detail/{{data.id}}">details</button>
 
     </div>
   </div>
