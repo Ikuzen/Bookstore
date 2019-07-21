@@ -12,4 +12,6 @@ export class Bookquery {
   author: string;
   price:number;
   smallThumbnail:string;
+  fullQuery:string;
+  fullQueryIsbn:string
 }

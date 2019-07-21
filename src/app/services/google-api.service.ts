@@ -3,18 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { TemplateBindingParseResult } from '@angular/compiler';
 import { stringify } from '@angular/compiler/src/util';
 import {finalize,delay} from 'rxjs/operators'
+import {Bookquery} from '../bookquery'
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleApiService {
 
+  savedBook:Bookquery = new Bookquery;
   private baseURL:string ="https://www.googleapis.com/books/v1/volumes?q=";
   newURL:string = this.baseURL;
   maxResult:number = 20;
   public data = null;
   public dataIndex = -1;
   public dataId;
+
+
   loading = true;
   error =  null;
   

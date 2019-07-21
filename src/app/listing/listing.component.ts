@@ -9,35 +9,40 @@ import {Bookquery} from '../bookquery'
 })
 export class ListingComponent implements OnInit {
   book:Bookquery = new Bookquery;
-  // allBooks:Bookquery = []
   constructor(public googleApiService : GoogleApiService) { }
 
   ngOnInit() {
-    this.book.author = "Alice";
+    if(this.googleApiService.savedBook.startIndex){
+      this.book = this.googleApiService.savedBook;
+    }
+    else{
     this.book.startIndex = '&startIndex=0'
     this.book.currentIndex = 0;
+    }
   }
+
   saveId(id:string):void{
     this.googleApiService.dataId = id;
   }
-  fetchInfos(data):void{
-    this.book.author = data.volumeInfo.authors[0];
-    this.book.title = data.volumeInfo.title;
-    this.book.id = data.id;
-    this.book.smallThumbnail = data.volumeInfo.imageLinks.smallThumbnail;
-    this.book.price = data.saleInfo.listPrice.amount;
+ 
+  duplicateQueryParams(){
+    this.googleApiService.savedBook = this.book
   }
   searchBtn(queryType):void{
     this.book.currentIndex = 0;
     this.book.savedToSearch = this.book.toSearch
+    this.book.fullQuery = this.googleApiService.queryBuild(this.book.toSearch,this.book.qType,this.book.sortType,this.book.maxResults,this.book.startIndex)
+    this.book.fullQueryIsbn = this.googleApiService.queryBuildIsbn(this.book.toSearch)
+    this.duplicateQueryParams();
     if(queryType === 'isbn'){
-      this.googleApiService.search(this.googleApiService.queryBuildIsbn(this.book.toSearch))
+      this.googleApiService.search(this.book.fullQueryIsbn)
 
     }
     else{
-      this.googleApiService.search(this.googleApiService.queryBuild(this.book.toSearch,this.book.qType,this.book.sortType,this.book.maxResults,this.book.startIndex))
+      this.googleApiService.search(this.book.fullQuery)
     }
   }
+  
   indexIncrementer(maxResults):void{
     if(maxResults === '&maxResults=10'){
       this.book.currentIndex += 10;
@@ -65,6 +70,9 @@ export class ListingComponent implements OnInit {
     else if(maxResults === '&maxResults=40'){
       this.book.currentIndex -= 40;
     }
+  }
+
+  initializeQueryParams(){
   }
   firstPage(){
     this.book.startIndex = '&startIndex=0'

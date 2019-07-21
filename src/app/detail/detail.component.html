@@ -5,8 +5,8 @@
   <p>Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
   <p>Publisher : {{data.volumeInfo.publisher || 'unavailable'}}</p>
   <p class="description"> Description : {{data.volumeInfo.description || 'unavailable'}}</p>
-  <p>ISBN-13 : {{data.volumeInfo.industryIdentifiers[0].identifier || 'unavailable'}}</p>
-  <p>ISBN-10 : {{data.volumeInfo.industryIdentifiers[1].identifier || 'unavailable'}}</p>
+  <p>ISBN-13 : {{data.volumeInfo.industryIdentifiers[0]?.identifier || 'unavailable'}}</p>
+  <p>ISBN-10 : {{data.volumeInfo.industryIdentifiers[1]?.identifier || 'unavailable'}}</p>
 
   <p>number of page : {{data.volumeInfo.pageCount || 'unavailable'}}</p>
   <p>Language : {{data.volumeInfo.language || 'unavailable'}}</p>
