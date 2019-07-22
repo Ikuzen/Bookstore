@@ -49,8 +49,8 @@
       <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
       <p>Id : {{ data.id || 'unavailable'}}</p>
       <p>Rating : {{(data.volumeInfo.averageRating) || 'unavailable'}}</p>
-      <p>Prix : {{ data.saleInfo.listPrice?.amount || "not for sale"}} € </p>
-      <button >add to cart</button>
+      <p>Prix : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
+      <button (click)="bookService.addToCart(data.id);">add to cart</button>
       <i class="fas fa-shopping-cart"></i>
       <button (click)="saveId(data.id)" routerLink ="/detail/{{data.id}}">details</button>
 

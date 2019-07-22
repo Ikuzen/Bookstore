@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BasketComponent } from './basket/basket.component';
 import { ListingComponent } from './listing/listing.component';
 import { DetailComponent } from './detail/detail.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -12,13 +11,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BasketComponent,
     ListingComponent,
-    DetailComponent
+    DetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

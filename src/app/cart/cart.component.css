@@ -1,0 +1,6 @@
+.shopping-cart{
+  position: fixed;
+  border: red 2px double;
+  display: flex;
+  flex-direction: column;
+}

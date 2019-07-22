@@ -14,7 +14,7 @@
   <p>eBook Format : {{data.saleInfo.isEbook  || 'unavailable'}}</p>
   <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
   <p>Rating : {{data.volumeInfo.averageRating || 'unavailable'}}</p>
-  <p>Price : {{ data.saleInfo.listPrice?.amount || "not for sale"}} € </p>
+  <p>Price : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
 
   <button >add to cart</button>
   <i class="fas fa-shopping-cart"></i>

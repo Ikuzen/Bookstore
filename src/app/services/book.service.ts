@@ -5,13 +5,20 @@ import { GoogleApiService } from './google-api.service';
   providedIn: 'root'
 })
 export class BookService {
-  allBooks:any[];
-  constructor(private googleApiService:GoogleApiService) { }
+  cartContent: any[] =[];
+  idToBook: any;
+  constructor(public googleApiService: GoogleApiService, private bookService: BookService) { }
   // getBook(id: number): Observable<Hero> {
   //   this.googleApiService.add(`HeroService: fetched hero id=${id}`);
   //   return of(HEROES.find(hero => hero.id === id));
   // }
-  storeBooks(bookArr:Object):void{
-    this.allBooks.push(bookArr)
+  addToCart(bookId: any): void {
+    for(let book of this.googleApiService.data.items){
+      if (book.id === bookId){
+        this.cartContent.push(book);
+      }
+    }
+    
+
   }
 }

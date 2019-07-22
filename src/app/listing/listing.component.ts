@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiService } from '../services/google-api.service';
-import {allBooks} from '../services/book.service'
 import {Bookquery} from '../bookquery'
+import { BookService } from '../services/book.service';
 @Component({
   selector: 'app-listing',
   templateUrl: './listing.component.html',
@@ -9,7 +9,7 @@ import {Bookquery} from '../bookquery'
 })
 export class ListingComponent implements OnInit {
   book:Bookquery = new Bookquery;
-  constructor(public googleApiService : GoogleApiService) { }
+  constructor(public googleApiService : GoogleApiService, public bookService:BookService) { }
 
   ngOnInit() {
     if(this.googleApiService.savedBook.startIndex){
@@ -28,6 +28,7 @@ export class ListingComponent implements OnInit {
   duplicateQueryParams(){
     this.googleApiService.savedBook = this.book
   }
+ 
   searchBtn(queryType):void{
     this.book.currentIndex = 0;
     this.book.savedToSearch = this.book.toSearch
