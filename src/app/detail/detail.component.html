@@ -3,6 +3,7 @@
   <p *ngIf="data.volumeInfo.title">Title : {{ data.volumeInfo.title || 'unavailable' }} </p>
   <p *ngIf="data.volumeInfo.authors" >Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
   <p *ngIf="data.volumeInfo.kind" >Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
+  <p>Categories : {{data.volumeInfo.categories || 'unavailable'}}</p>
   <p *ngIf="data.volumeInfo.publisher" >Publisher : {{data.volumeInfo.publisher || 'unavailable'}}</p>
   <p *ngIf="data.volumeInfo.description" class="description" [innerHTML]="data.volumeInfo.description || 'unavailable'" ></p>
   <p *ngIf="data.volumeInfo.ISBN-13" >ISBN-13 : {{data.volumeInfo.industryIdentifiers[0]?.identifier || 'unavailable'}}</p>

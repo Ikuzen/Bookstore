@@ -39,8 +39,8 @@
 
   <button *ngIf="book.currentIndex>1" (click)="firstPage()" >first page </button>
   <button *ngIf="book.currentIndex>1" (click)="previousPage()" >previous page </button>
-  <button *ngIf="book.currentIndex<googleApiService.data.totalItems-10" (click)="nextPage()" >next page </button>
-  
+  <button *ngIf="book.currentIndex<getIndexLimit()" (click)="nextPage()" >next page </button><!--displays next page if current index is inferior to max index minus the max results displayed-->
+  <button *ngIf="book.currentIndex<googleApiService.data.totalItems" (click)="lastPage()">last page</button>
   <!-- start of single book result -->
   <div *ngFor="let data of googleApiService.data.items">
     <div class= "product"> <!-- if book in sales, then display it-->
@@ -48,6 +48,7 @@
       <p>Auteur : {{data.volumeInfo.authors ||'unavailable'}}</p>
       <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
       <p>Id : {{ data.id || 'unavailable'}}</p>
+      <p>Categories : {{data.volumeInfo.categories || 'unavailable'}}</p>
       <p>Rating : {{(data.volumeInfo.averageRating) || 'unavailable'}}</p>
       <p>Prix : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
       <button (click)="bookService.addToCart(data.id)">add to cart</button>
