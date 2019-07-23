@@ -4,7 +4,7 @@
   <p>Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
   <p>Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
   <p>Publisher : {{data.volumeInfo.publisher || 'unavailable'}}</p>
-  <p class="description"> Description : {{data.volumeInfo.description || 'unavailable'}}</p>
+  <p class="description" [innerHTML]="data.volumeInfo.description || 'unavailable'" ></p>
   <p>ISBN-13 : {{data.volumeInfo.industryIdentifiers[0]?.identifier || 'unavailable'}}</p>
   <p>ISBN-10 : {{data.volumeInfo.industryIdentifiers[1]?.identifier || 'unavailable'}}</p>
 
