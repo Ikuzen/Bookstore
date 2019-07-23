@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiService } from '../services/google-api.service';
 import { ActivatedRoute } from '@angular/router';
+import {BookService} from '../services/book.service'
 
 
 @Component({
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
   data: any;
-  constructor(public googleApiService: GoogleApiService, private route: ActivatedRoute) { }
+  constructor(public googleApiService: GoogleApiService, private route: ActivatedRoute, private bookService:BookService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
