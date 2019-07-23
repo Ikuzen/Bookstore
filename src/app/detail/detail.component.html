@@ -1,5 +1,5 @@
-<div *ngFor="let data of googleApiService.data.items"> <!-- if book in sales, then display it-->
-  <div *ngIf="data.id === googleApiService.dataId">
+<!-- <div *ngFor="let data of googleApiService.data.items">  -->
+<div *ngIf="data">
   <p>Title : {{ data.volumeInfo.title || 'unavailable' }} </p>
   <p>Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
   <p>Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
@@ -16,8 +16,8 @@
   <p>Rating : {{data.volumeInfo.averageRating || 'unavailable'}}</p>
   <p>Price : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
 
-  <button >add to cart</button>
+  <button>add to cart</button>
   <i class="fas fa-shopping-cart"></i>
-  <button routerLink ="">Back</button>
+  <button routerLink="">Back</button>
 </div>
-</div>
+<!-- </div> -->

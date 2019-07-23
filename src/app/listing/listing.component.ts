@@ -22,7 +22,7 @@ export class ListingComponent implements OnInit {
   }
 
   saveId(id:string):void{
-    this.googleApiService.dataId = id;
+    this.googleApiService.id = id;
   }
  
   duplicateQueryParams(){

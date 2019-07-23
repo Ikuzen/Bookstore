@@ -14,9 +14,10 @@ export class GoogleApiService {
   private baseURL:string ="https://www.googleapis.com/books/v1/volumes?q=";
   newURL:string = this.baseURL;
   maxResult:number = 20;
-  public data = null;
-  public dataIndex = -1;
-  public dataId;
+  public data:any = null;
+  public idData:any = null;
+  public dataIndex:number = -1;
+  public id:String = null;
 
 
   loading = true;
@@ -49,6 +50,11 @@ export class GoogleApiService {
   })}
   mresults(num : number){
     this.maxResult = num;
+  }
+  idSearch(id:String){
+    return this.http.get("https://www.googleapis.com/books/v1/volumes/"+id)
+
+
   }
   queryBuild(query:string,queryType:string,sortType:string,maxResults:string,startIndex:string):string {
     return this.baseURL+queryType+":"+query+maxResults+sortType+startIndex;

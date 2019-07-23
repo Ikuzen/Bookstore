@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiService } from '../services/google-api.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-detail',
@@ -8,10 +10,14 @@ import { GoogleApiService } from '../services/google-api.service';
 })
 export class DetailComponent implements OnInit {
   data:any;
-  constructor(public googleApiService:GoogleApiService) { }
+  constructor(public googleApiService:GoogleApiService, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.data = this.googleApiService.data;
+    
+    this.googleApiService.idSearch(this.route.params.value.id).subscribe((data)=>{
+      this.data = data;
+    })
   }
+
 
 }
