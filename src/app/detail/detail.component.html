@@ -13,6 +13,7 @@
   <p>Id : {{ data.id || 'unavailable'}}</p>
   <p>eBook Format : {{data.saleInfo.isEbook  || 'unavailable'}}</p>
   <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
+  <img *ngIf="!data.volumeInfo.imageLinks" src="../../assets/noImage.jpeg" alt="no cover">
   <p>Rating : {{data.volumeInfo.averageRating || 'unavailable'}}</p>
   <p>Price : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
 

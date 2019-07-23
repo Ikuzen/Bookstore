@@ -1,9 +1,9 @@
-<div *ngIf="bookService">
-  <div class="shopping-cart" *ngFor="let book of bookService.cartContent">
+<div class="shopping-cart" *ngIf="bookService">
+  <div  *ngFor="let book of bookService.cartContent">
     <div class="article">
-      <p> {{book.volumeInfo.title}} : {{ book.saleInfo.listPrice?.amount || "10"}}</p>
+      <p> {{book.volumeInfo.title}} : {{ book.saleInfo.listPrice?.amount || "10"}} €</p>
       <p></p>
     </div>
   </div>
-  <button>pay</button>
+  <button>buy</button>
 </div>
