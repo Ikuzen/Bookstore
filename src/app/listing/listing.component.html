@@ -50,7 +50,7 @@
       <p>Id : {{ data.id || 'unavailable'}}</p>
       <p>Rating : {{(data.volumeInfo.averageRating) || 'unavailable'}}</p>
       <p>Prix : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
-      <button (click)="bookService.addToCart(data.id);">add to cart</button>
+      <button (click)="bookService.addToCart2(data.id)">add to cart</button>
       <i class="fas fa-shopping-cart"></i>
       <button (click)="saveId(data.id)" routerLink ="/detail/{{data.id}}">details</button>
 

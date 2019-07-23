@@ -53,8 +53,6 @@ export class GoogleApiService {
   }
   idSearch(id:String){
     return this.http.get("https://www.googleapis.com/books/v1/volumes/"+id)
-
-
   }
   queryBuild(query:string,queryType:string,sortType:string,maxResults:string,startIndex:string):string {
     return this.baseURL+queryType+":"+query+maxResults+sortType+startIndex;

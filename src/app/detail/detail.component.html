@@ -4,7 +4,7 @@
   <p>Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
   <p>Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
   <p>Publisher : {{data.volumeInfo.publisher || 'unavailable'}}</p>
-  <p class="description" [innerHTML]="data.volumeInfo.description || 'unavailable'" ></p>
+  <p *ngIf="data.volumeInfo.description" class="description" [innerHTML]="data.volumeInfo.description || 'unavailable'" ></p>
   <p>ISBN-13 : {{data.volumeInfo.industryIdentifiers[0]?.identifier || 'unavailable'}}</p>
   <p>ISBN-10 : {{data.volumeInfo.industryIdentifiers[1]?.identifier || 'unavailable'}}</p>
 
@@ -17,7 +17,7 @@
   <p>Rating : {{data.volumeInfo.averageRating || 'unavailable'}}</p>
   <p>Price : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
 
-  <button>add to cart</button>
+  <button (click)="bookService.addToCart2(data.id)">add to cart</button>
   <i class="fas fa-shopping-cart"></i>
   <button routerLink="">Back</button>
 </div>
