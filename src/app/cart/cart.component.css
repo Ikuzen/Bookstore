@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   background-color: aqua;
+  top:85px;
+  right:0px;
 }
 .article{
   display: flex;
