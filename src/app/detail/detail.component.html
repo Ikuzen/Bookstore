@@ -1,12 +1,12 @@
 <!-- <div *ngFor="let data of googleApiService.data.items">  -->
 <div *ngIf="data">
-  <p>Title : {{ data.volumeInfo.title || 'unavailable' }} </p>
-  <p>Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
-  <p>Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
-  <p>Publisher : {{data.volumeInfo.publisher || 'unavailable'}}</p>
+  <p *ngIf="data.volumeInfo.title">Title : {{ data.volumeInfo.title || 'unavailable' }} </p>
+  <p *ngIf="data.volumeInfo.authors" >Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
+  <p *ngIf="data.volumeInfo.kind" >Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
+  <p *ngIf="data.volumeInfo.publisher" >Publisher : {{data.volumeInfo.publisher || 'unavailable'}}</p>
   <p *ngIf="data.volumeInfo.description" class="description" [innerHTML]="data.volumeInfo.description || 'unavailable'" ></p>
-  <p>ISBN-13 : {{data.volumeInfo.industryIdentifiers[0]?.identifier || 'unavailable'}}</p>
-  <p>ISBN-10 : {{data.volumeInfo.industryIdentifiers[1]?.identifier || 'unavailable'}}</p>
+  <p *ngIf="data.volumeInfo.ISBN-13" >ISBN-13 : {{data.volumeInfo.industryIdentifiers[0]?.identifier || 'unavailable'}}</p>
+  <p *ngIf="data.volumeInfo.ISBN-10">ISBN-10 : {{data.volumeInfo.industryIdentifiers[1]?.identifier || 'unavailable'}}</p>
 
   <p>number of page : {{data.volumeInfo.pageCount || 'unavailable'}}</p>
   <p>Language : {{data.volumeInfo.language || 'unavailable'}}</p>

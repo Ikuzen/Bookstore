@@ -15,5 +15,7 @@ export class CartComponent implements OnInit {
     this.data = this.googleApiService.data;
 
   }
-
+  removeArticle(){
+    
+  }
 }
