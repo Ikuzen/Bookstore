@@ -9,15 +9,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  data:any;
-  constructor(public googleApiService:GoogleApiService, private route:ActivatedRoute) { }
+  data: any;
+  constructor(public googleApiService: GoogleApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
-    this.googleApiService.idSearch(this.route.params.value.id).subscribe((data)=>{
-      this.data = data;
-    })
+    this.route.params.subscribe((params) => {
+      this.googleApiService.idSearch(params.id).subscribe((data) => {
+        this.data = data;
+
+      })
+    });
   }
+
 
 
 }
