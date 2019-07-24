@@ -4,7 +4,7 @@
   <div  *ngFor="let book of bookService.cartContent2">
     <div class="article">
       <p>x{{book.quantity}} {{book.bookObj.volumeInfo.title}} : {{ book.bookObj.saleInfo.listPrice?.amount || "10"}} €</p>
-      <button (click)="removeArticle(book.id)">remove</button>
+      <button (click)="removeArticle(book.bookObj.id)">remove</button>
     </div>
   </div>
   <div>Total : {{bookService.totalPrice}} €</div>

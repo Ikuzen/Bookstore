@@ -5,11 +5,11 @@
 <!-- Search bar-->
 <!-- ------------>
 <div class="container">
-  <input [(ngModel)]="book.toSearch" placeholder="type book" #ctrl="ngModel" required />
+  <input [(ngModel)]="book.toSearch" placeholder="type book" #ctrl="ngModel" required="required" />
   <label for="query-type">search by :</label>
   <div>
     <select class="browser-default" [(ngModel)]="book.qType" name="query-type">
-      <option value="intitle" selected>by title</option>
+      <option value="intitle" selected="selected">by title</option>
       <option value="inauthor">by author</option>
       <option value="isbn">by ISBN</option>
     </select>
@@ -17,7 +17,7 @@
   <div>
     <label for="sort-type">order by :</label>
     <select class="browser-default" [(ngModel)]="book.sortType" name="sort-type">
-      <option value="" selected>no specific order</option>
+      <option value="" selected="selected">no specific order</option>
       <option value="&orderBy=newest"> newest</option>
       <option value="&orderBy=relevance"> relevance</option>
     </select>
@@ -25,7 +25,7 @@
   <div>
     <label for="max-results">show results :</label>
     <select class="browser-default" [(ngModel)]="book.maxResults" name="max-results">
-      <option value="&maxResults=10" selected>10</option>
+      <option value="&maxResults=10" selected="selected">10</option>
       <option value="&maxResults=20"> 20</option>
       <option value="&maxResults=30"> 30</option>
       <option value="&maxResults=40"> 40</option>

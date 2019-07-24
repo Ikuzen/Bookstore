@@ -15,22 +15,30 @@ export class CartComponent implements OnInit {
     this.data = this.googleApiService.data;
 
   }
-  removeArticle(bookId:String):void{
-    let isRemoved = false
-    for (let i=0;i<this.bookService.cartContent.length;i++){
-      if(this.bookService.cartContent[i].id === bookId && !isRemoved){
-        if(this.bookService.cartContent[i].saleInfo.listPrice){ // checks if price exist, in order to substract it when removing
-          this.bookService.totalPrice -= this.bookService.cartContent[i].saleInfo.listPrice.amount
-        }
-        else{
-          this.bookService.totalPrice -= 10;
+  refundPrice(i:number):void{
+    if(this.bookService.cartContent2[i].bookObj.saleInfo.listPrice){ // checks if price exist, in order to substract it when removing
+      this.bookService.totalPrice -= this.bookService.cartContent2[i].bookObj.saleInfo.listPrice.amount
+    }
+    else{
+      this.bookService.totalPrice -= 10;
 
-        }
-        this.bookService.cartContent.splice(i,i+1)
-        console.log("remmoved")
-        isRemoved=true;
-        break
+    }
+  }
+  removeArticle(bookId:String):void{
+    for (let i=0;i<this.bookService.cartContent2.length;i++){
+      console.log(this.bookService.cartContent2[i].bookObj.id)
+      console.log(bookId)
+      if(this.bookService.cartContent2[i].bookObj.id === bookId){
         
+        console.log("removed")
+        if(this.bookService.cartContent2[i].quantity>1){ // case if more than 1 article in quantity
+          this.refundPrice(i);
+          this.bookService.cartContent2[i].quantity--
+        }
+        else{ // if 1 article, remove from the array
+          this.refundPrice(i);
+          this.bookService.cartContent2.splice(i,i+1)
+        }
       }
 
     }
