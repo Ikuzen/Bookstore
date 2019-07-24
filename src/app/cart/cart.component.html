@@ -1,3 +1,4 @@
+<div class="container">
 <div class="shopping-cart" *ngIf="bookService">
   <div  *ngFor="let book of bookService.cartContent">
     <div class="article">
@@ -7,4 +8,5 @@
   </div>
   <div>Total : {{bookService.totalPrice}} €</div>
   <button>buy</button>
+</div>
 </div>

@@ -21,7 +21,7 @@ export class BookService {
     }
   }
   addToCart2(bookId: String):void{ // add to cart with a new api request using the id, needed when adding from details component
-      this.googleApiService.idSearch(bookId).subscribe((book) => {
+      this.googleApiService.idSearch(bookId).subscribe((book:any) => {
         this.cartContent.push(book);
         if(book.saleInfo.listPrice){
           this.totalPrice += book.saleInfo.listPrice.amount
