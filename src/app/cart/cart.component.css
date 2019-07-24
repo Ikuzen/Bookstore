@@ -1,13 +1,19 @@
 .shopping-cart{
   position: fixed;
-  border: red 2px double;
+  border:#D70D10 2px double;
   display: flex;
   flex-direction: column;
-  background-color: aqua;
+  background-color: #283747;  
   top:85px;
   right:0px;
+  font-family: 'Permanent Marker', cursive;
 }
 .article{
   display: flex;
   flex-direction: row;
+  color: whitesmoke;
+}
+
+.total{
+  color:whitesmoke;
 }
