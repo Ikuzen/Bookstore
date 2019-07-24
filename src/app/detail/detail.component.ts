@@ -33,9 +33,10 @@ export class DetailComponent implements OnInit {
           this.bookService.cartContent2[i].quantity++;
           isAdded = true;
           if (this.data.saleInfo.listPrice) {
-            this.bookService.totalPrice += +this.data.saleInfo.listPrice.amount.toFixed(2)
+            this.bookService.totalPrice += this.data.saleInfo.listPrice.amount;
+            this.bookService.totalPrice = Math.round(this.bookService.totalPrice * 100) / 100;
           } else {
-            this.bookService.totalPrice += +(10).toFixed(2);
+            this.bookService.totalPrice += 10;
           }
           break;
         }
@@ -43,9 +44,10 @@ export class DetailComponent implements OnInit {
     if(!isAdded){
         this.bookService.cartContent2.push({ quantity: 1, bookObj: this.data });
         if (this.data.saleInfo.listPrice) {
-          this.bookService.totalPrice += +this.data.saleInfo.listPrice.amount.toFixed(2)
+          this.bookService.totalPrice +=  this.data.saleInfo.listPrice.amount;
+          this.bookService.totalPrice = Math.round(this.bookService.totalPrice * 100) / 100;
         } else {
-          this.bookService.totalPrice += +(10).toFixed(2);
+          this.bookService.totalPrice += 10;
         }
     }
   }

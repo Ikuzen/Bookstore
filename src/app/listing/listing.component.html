@@ -31,6 +31,41 @@
       <option value="&maxResults=40"> 40</option>
     </select>
   </div>
+  <label for="subject-type">subject:</label>
+  <div class="subjects-checkbox">
+    <form class="browser-default" [(ngModel)]="book.subject" name="query-type">
+      <p>
+        <label>
+          <input type="checkbox" (change) ="checkSubject(book.fiction)" /> <span>Fiction</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input type="checkbox"  (change) ="checkSubject(book.thriller)" />  <span>Thriller</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input type="checkbox" (change) ="checkSubject(book.suspense)" />  <span>Suspense</span>
+        </label>
+        </p>
+        <p>
+            <label>
+              <input type="checkbox" (change) ="checkSubject(book.historical)" />  <span>Historical</span>
+            </label>
+          </p>
+          <p>
+              <label>
+                <input type="checkbox" (change) ="checkSubject(book.literary)" />  <span>Literary</span>
+              </label>
+            </p>
+            
+    </form>
+  </div>
+
+
+
+
   <button (click)='searchBtn(book.qType)'>search</button>
 
   <!-- ----------------->

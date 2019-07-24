@@ -24,8 +24,8 @@ export class BookService {
         else {
           this.cartContent2[i].quantity++;
         }
-        if (this.googleApiService.data.items[i].saleInfo.listPrice) {
-          this.totalPrice += +this.googleApiService.data.items[i].saleInfo.listPrice.amount.toFixed(2)
+        if (this.googleApiService.data.items[i].saleInfo.listPrice) { // price increment
+          this.totalPrice += Math.round((+this.googleApiService.data.items[i].saleInfo.listPrice.amount.toFixed(2))*100)/100
         } else {
           this.totalPrice += +(10).toFixed(2);
         }
@@ -33,32 +33,30 @@ export class BookService {
     }
     console.log(this.cartContent2)
   }
-  fetchBook(bookId: String):any {
-    this.googleApiService.idSearch(bookId).subscribe((book: any) => {
-      console.log(book)
-      return book;
-    })
+  // fetchBook(bookId: String):any {
+  //   this.googleApiService.idSearch(bookId).subscribe((book: any) => {
+  //     console.log(book)
+  //     return book;
+  //   })
 
-  }
-  addToCart2(bookId: String): void { // add to cart with a new api request using the id, needed when adding from details component
-    let book = this.fetchBook(bookId);  
-    console.log(this.cartContent2)
-    console.log(book)
-    console.log(this.googleApiService.data)
-    for (let i = 0; i < this.cartContent2.length; i++) {
-      if (!this.cartContent2[i])
-          this.cartContent2.push({ quantity: 1, bookObj: book });
-        else {
-          this.cartContent2[i].quantity++;
-        }
-        if (this.googleApiService.data.items[i].saleInfo.listPrice) {
-          this.totalPrice += +book.saleInfo.listPrice.amount.toFixed(2)
-        } else {
-          this.totalPrice += +(10).toFixed(2);
-        }
-        console.log(this.cartContent2)
-    }
-  }
+  // }
+  // addToCart2(bookId: String): void { // add to cart with a new api request using the id, needed when adding from details component
+  //   let book = this.fetchBook(bookId);  
+ 
+  //   for (let i = 0; i < this.cartContent2.length; i++) {
+  //     if (!this.cartContent2[i])
+  //         this.cartContent2.push({ quantity: 1, bookObj: book });
+  //       else {
+  //         this.cartContent2[i].quantity++;
+  //       }
+  //       if (this.googleApiService.data.items[i].saleInfo.listPrice) {
+  //         this.totalPrice += +book.saleInfo.listPrice.amount.toFixed(2)
+  //       } else {
+  //         this.totalPrice += +(10).toFixed(2);
+  //       }
+  //       console.log(this.cartContent2)
+  //   }
+  // }
   expendCart() {
     this.isExpended = true;
   }

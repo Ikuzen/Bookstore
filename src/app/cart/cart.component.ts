@@ -17,7 +17,8 @@ export class CartComponent implements OnInit {
   }
   refundPrice(i:number):void{
     if(this.bookService.cartContent2[i].bookObj.saleInfo.listPrice){ // checks if price exist, in order to substract it when removing
-      this.bookService.totalPrice -= this.bookService.cartContent2[i].bookObj.saleInfo.listPrice.amount
+      this.bookService.totalPrice -=this.bookService.cartContent2[i].bookObj.saleInfo.listPrice.amount;
+      this.bookService.totalPrice = Math.round(this.bookService.totalPrice*100)/100
     }
     else{
       this.bookService.totalPrice -= 10;
