@@ -117,27 +117,27 @@ export class ListingComponent implements OnInit {
     return this.googleApiService.data.totalItems - this.getMaxResult()
   }
   firstPage() {
-    this.scrollTop();
+    // this.scrollTop();
     this.book.startIndex = '&startIndex=0'
     this.googleApiService.search(this.googleApiService.queryBuild(this.book.savedToSearch, this.book.qType, this.book.sortType, this.book.maxResults, this.book.startIndex, this.book.subject))
     this.book.currentIndex = 0;
   }
   lastPage() {
-    this.scrollTop();
+    // this.scrollTop();
     this.book.startIndex = `&startIndex=${(parseInt(this.googleApiService.data.totalItems) - this.getMaxResult()).toString()}`
     this.googleApiService.search(this.googleApiService.queryBuild(this.book.savedToSearch, this.book.qType, this.book.sortType, this.book.maxResults, this.book.startIndex, this.book.subject))
     this.book.currentIndex = parseInt(this.googleApiService.data.totalItems) - this.getMaxResult();
     console.log(this.book.currentIndex);
   }
   nextPage() {
-    this.scrollTop();
+    // this.scrollTop();
     this.indexIncrementer(this.book.maxResults)
     this.book.startIndex = `&startIndex=${this.book.currentIndex}`
     this.googleApiService.search(this.googleApiService.queryBuild(this.book.savedToSearch, this.book.qType, this.book.sortType, this.book.maxResults, this.book.startIndex, this.book.subject))
   }
 
   previousPage() {
-    this.scrollTop()
+    // this.scrollTop()
     this.indexDecrementer(this.book.maxResults)
     this.book.startIndex = `&startIndex=${this.book.currentIndex}`
     this.googleApiService.search(this.googleApiService.queryBuild(this.book.savedToSearch, this.book.qType, this.book.sortType, this.book.maxResults, this.book.startIndex, this.book.subject))
@@ -146,5 +146,9 @@ export class ListingComponent implements OnInit {
   scrollTop() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+  scrollToElement($element): void {
+    console.log($element);
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 }

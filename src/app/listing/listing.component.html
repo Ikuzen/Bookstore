@@ -36,30 +36,30 @@
     <form class="browser-default" [(ngModel)]="book.subject" name="query-type">
       <p>
         <label>
-          <input type="checkbox" (change) ="checkSubject(book.fiction)" /> <span>Fiction</span>
+          <input type="checkbox" (change)="checkSubject(book.fiction)" /> <span>Fiction</span>
         </label>
       </p>
       <p>
         <label>
-          <input type="checkbox"  (change) ="checkSubject(book.thriller)" />  <span>Thriller</span>
+          <input type="checkbox" (change)="checkSubject(book.thriller)" /> <span>Thriller</span>
         </label>
       </p>
       <p>
         <label>
-          <input type="checkbox" (change) ="checkSubject(book.suspense)" />  <span>Suspense</span>
+          <input type="checkbox" (change)="checkSubject(book.suspense)" /> <span>Suspense</span>
         </label>
-        </p>
-        <p>
-            <label>
-              <input type="checkbox" (change) ="checkSubject(book.historical)" />  <span>Historical</span>
-            </label>
-          </p>
-          <p>
-              <label>
-                <input type="checkbox" (change) ="checkSubject(book.literary)" />  <span>Literary</span>
-              </label>
-            </p>
-            
+      </p>
+      <p>
+        <label>
+          <input type="checkbox" (change)="checkSubject(book.historical)" /> <span>Historical</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input type="checkbox" (change)="checkSubject(book.literary)" /> <span>Literary</span>
+        </label>
+      </p>
+
     </form>
   </div>
 
@@ -76,21 +76,20 @@
     <div *ngIf="googleApiService.data.totalItems == 0">
       <p>No results</p>
     </div>
-    <p> showing {{book.currentIndex+1}} out of {{googleApiService.data.totalItems}} results</p>
+    <p #target> showing {{book.currentIndex+1}} out of {{googleApiService.data.totalItems}} results</p>
 
-    <button *ngIf="book.currentIndex>1" (click)="firstPage()">first page </button>
-    <button *ngIf="book.currentIndex>1" (click)="previousPage()">previous page </button>
-    <button *ngIf="book.currentIndex<=getIndexLimit()" (click)="nextPage()">next page </button>
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex>1" (click)="firstPage()">first page </button>
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex>1" (click)="previousPage()">previous page </button>
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex<=getIndexLimit()" (click)="nextPage()">next page </button>
     <!--displays next page if current index is inferior to max index minus the max results displayed-->
-    <button *ngIf="book.currentIndex<googleApiService.data.totalItems" (click)="lastPage()">last page</button>
-
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex<googleApiService.data.totalItems" (click)="lastPage()">last page</button>
 
     <!-- --------------------------- -->
     <!-- start of single book result -->
     <!-- --------------------------- -->
 
     <div class="all-products" *ngFor="let data of googleApiService.data.items">
-      <div class="product">
+      <div class="col s12" class="product">
         <!-- if book in sales, then display it-->
         <p>Titre : {{ data.volumeInfo.title || 'unavailable' }} </p>
         <p>Auteur : {{data.volumeInfo.authors ||'unavailable'}}</p>
@@ -108,9 +107,10 @@
     <!-- end of single book result -->
     <!-- ---------------------------->
     <p> showing {{book.currentIndex+1}} out of {{googleApiService.data.totalItems}} results</p>
-    <button *ngIf="book.currentIndex>1" (click)="firstPage()">first page </button>
-    <button *ngIf="book.currentIndex>1" (click)="previousPage()">previous page </button>
-    <button *ngIf="book.currentIndex<(googleApiService.data.totalItems-10)" (click)="nextPage()">next page </button>
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex>1" (click)="firstPage()">first page </button>
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex>1" (click)="previousPage()">previous page </button>
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex<(googleApiService.data.totalItems-10)" (click)="nextPage()">next page </button>
+    <button (click)="scrollToElement(target)" *ngIf="book.currentIndex<googleApiService.data.totalItems" (click)="lastPage()">last page</button>
 
   </ng-template>
   <ng-template #loading> Loading...</ng-template>
