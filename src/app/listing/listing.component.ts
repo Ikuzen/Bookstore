@@ -19,6 +19,7 @@ export class ListingComponent implements OnInit {
     this.book.startIndex = '&startIndex=0'
     this.book.currentIndex = 0;
     }
+    
   }
 
   saveId(id:string):void{
