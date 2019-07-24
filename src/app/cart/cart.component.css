@@ -6,6 +6,12 @@
   background-color: aqua;
   top:85px;
   right:0px;
+  min-width: 200px;
+  max-width: 200px;
+  word-wrap: break-word;
+
+
+  
 }
 .article{
   display: flex;

@@ -1,9 +1,11 @@
 <!-- <div *ngFor="let data of googleApiService.data.items">  -->
-<div class="container">
+  <div class="container">
     <div *ngIf="data">
-        <p *ngIf="data.volumeInfo.title">Title : {{ data.volumeInfo.title || 'unavailable' }} </p>
-        <p *ngIf="data.volumeInfo.authors" >Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
-        <p *ngIf="data.volumeInfo.kind" >Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
+      <p *ngIf="data.volumeInfo.title">Title : {{ data.volumeInfo.title || 'unavailable' }} </p>
+      <p *ngIf="data.volumeInfo.authors" >Author : {{data.volumeInfo.authors ||'unavailable'}}</p>
+      <p *ngIf="data.volumeInfo.kind" >Kind : {{data.volumeInfo.categories || 'unavailable'}}</p>
+      <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
+      <img *ngIf="!data.volumeInfo.imageLinks" src="../../assets/noImage.jpeg" alt="no cover">
         <p>Categories : {{data.volumeInfo.categories || 'unavailable'}}</p>
         <p *ngIf="data.volumeInfo.publisher" >Publisher : {{data.volumeInfo.publisher || 'unavailable'}}</p>
         <p *ngIf="data.volumeInfo.description" class="description" [innerHTML]="data.volumeInfo.description || 'unavailable'" ></p>
@@ -14,12 +16,10 @@
         <p>Language : {{data.volumeInfo.language || 'unavailable'}}</p>
         <p>Id : {{ data.id || 'unavailable'}}</p>
         <p>eBook Format : {{data.saleInfo.isEbook  || 'unavailable'}}</p>
-        <img *ngIf="data.volumeInfo.imageLinks" [src]="data.volumeInfo.imageLinks.smallThumbnail" alt="data cover">
-        <img *ngIf="!data.volumeInfo.imageLinks" src="../../assets/noImage.jpeg" alt="no cover">
         <p>Rating : {{data.volumeInfo.averageRating || 'unavailable'}}</p>
         <p>Price : {{ data.saleInfo.listPrice?.amount || "10"}} € </p>
       
-        <button (click)="bookService.addToCart2(data.id)">add to cart</button>
+        <button (click)="addToCart2()">add to cart</button>
         <i class="fas fa-shopping-cart"></i>
         <button routerLink="">Back</button>
       </div>

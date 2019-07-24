@@ -35,12 +35,16 @@ export class BookService {
   }
   fetchBook(bookId: String):any {
     this.googleApiService.idSearch(bookId).subscribe((book: any) => {
+      console.log(book)
       return book;
     })
 
   }
   addToCart2(bookId: String): void { // add to cart with a new api request using the id, needed when adding from details component
     let book = this.fetchBook(bookId);  
+    console.log(this.cartContent2)
+    console.log(book)
+    console.log(this.googleApiService.data)
     for (let i = 0; i < this.cartContent2.length; i++) {
       if (!this.cartContent2[i])
           this.cartContent2.push({ quantity: 1, bookObj: book });
@@ -52,6 +56,7 @@ export class BookService {
         } else {
           this.totalPrice += +(10).toFixed(2);
         }
+        console.log(this.cartContent2)
     }
   }
   expendCart() {
