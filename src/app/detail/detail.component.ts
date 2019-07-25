@@ -33,14 +33,14 @@ export class DetailComponent implements OnInit {
         if (this.bookService.cartContent2[i].bookObj.id == this.data.id) {
           this.bookService.cartContent2[i].quantity++;
           isAdded = true;
-          this.cartComponent.countFullPrice()
+          this.bookService.countFullPrice()
 
           break;
         }
     }
     if(!isAdded){
         this.bookService.cartContent2.push({ quantity: 1, bookObj: this.data });
-        this.cartComponent.countFullPrice()
+        this.bookService.countFullPrice()
     }
   }
     console.log(this.data)
