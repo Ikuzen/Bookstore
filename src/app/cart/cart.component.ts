@@ -15,24 +15,14 @@ export class CartComponent implements OnInit {
     this.data = this.googleApiService.data;
 
   }
-  removeArticle(bookId:String):void{
-    let isRemoved = false
-    for (let i=0;i<this.bookService.cartContent.length;i++){
-      if(this.bookService.cartContent[i].id === bookId && !isRemoved){
-        if(this.bookService.cartContent[i].saleInfo.listPrice){ // checks if price exist, in order to substract it when removing
-          this.bookService.totalPrice -= this.bookService.cartContent[i].saleInfo.listPrice.amount
-        }
-        else{
-          this.bookService.totalPrice -= 10;
+  // refundPrice(i:number):void{
+  //   if(this.bookService.cartContent2[i].bookObj.saleInfo.listPrice){ // checks if price exist, in order to substract it when removing
+  //     this.bookService.totalPrice -=this.bookService.cartContent2[i].bookObj.saleInfo.listPrice.amount;
+  //     this.bookService.totalPrice = Math.round(this.bookService.totalPrice*100)/100
+  //   }
+  //   else{
+  //     this.bookService.totalPrice -= 10;
 
-        }
-        this.bookService.cartContent.splice(i,i+1)
-        console.log("remmoved")
-        isRemoved=true;
-        break
-        
-      }
-
-    }
-  }
+  //   }
+  // }
 }

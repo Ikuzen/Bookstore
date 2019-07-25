@@ -7,13 +7,28 @@
   top:85px;
   right:0px;
   font-family: 'Permanent Marker', cursive;
+  min-width: 200px;
+  max-width: 200px;
+  word-wrap: break-word;
 }
 .article{
   display: flex;
   flex-direction: row;
   color: whitesmoke;
 }
-
 .total{
   color:whitesmoke;
+}
+.price-full{
+  text-decoration: line-through;
+}
+.price-discount{
+  font-size: 20px;
+  font-weight: bold;
+
+}
+.discount{
+  font-size: 10px;
+  font-weight: bold;
+  color: red;
 }

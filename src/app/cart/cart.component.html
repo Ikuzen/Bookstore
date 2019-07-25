@@ -1,12 +1,14 @@
 <div class="container">
 <div class="shopping-cart" *ngIf="bookService">
-  <div  *ngFor="let book of bookService.cartContent">
+  <button (click)="bookService.expendCart()" routerLink="/cart">Full cart</button>
+  <div  *ngFor="let book of bookService.cartContent2">
     <div class="article">
-      <p> {{book.volumeInfo.title}} : {{ book.saleInfo.listPrice?.amount || "10"}} €</p>
-      <button (click)="removeArticle(book.id)">remove</button>
+      <a>x{{book.quantity}} <span (click)="saveId(book.bookObj.id)" routerLink="/detail/{{book.bookObj.id}}">{{book.bookObj.volumeInfo.title}}</span> : <span class="price-full">{{ book.bookObj.saleInfo.listPrice?.amount || "10"}}€</span> <span class="price-discount">{{bookService.discount(book.quantity,book.bookObj.saleInfo.listPrice?.amount || 10)}}€</span> <span class="discount"> {{bookService.discountDisplayer(book.quantity)}}</span> </a>
+      <button (click)="bookService.removeArticle(book.bookObj.id)">remove</button>
     </div>
   </div>
   <div class="total">Total : {{bookService.totalPrice}} €</div>
   <button>buy</button>
+  <button (click) ="bookService.isExpended = false" *ngIf="bookService.isExpended" routerLink="">back</button>
 </div>
 </div>
