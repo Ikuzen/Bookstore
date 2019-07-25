@@ -3,7 +3,7 @@
   <button (click)="bookService.expendCart()" routerLink="/cart">Full cart</button>
   <div  *ngFor="let book of bookService.cartContent2">
     <div class="article">
-      <p>x{{book.quantity}} <span (click)="saveId(book.bookObj.id)" routerLink="/detail/{{book.bookObj.id}}">{{book.bookObj.volumeInfo.title}}</span> : {{ book.bookObj.saleInfo.listPrice?.amount || "10"}} <span class="discount"> 5% off</span> €</p>
+      <p>x{{book.quantity}} <span (click)="saveId(book.bookObj.id)" routerLink="/detail/{{book.bookObj.id}}">{{book.bookObj.volumeInfo.title}}</span> : <span class="price-full">{{ book.bookObj.saleInfo.listPrice?.amount || "10"}}€</span> <span class="price-discount">{{discount(book.quantity,book.bookObj.saleInfo.listPrice?.amount || 10)}}€</span> <span class="discount"> {{discountDisplayer(book.quantity)}}</span> </p>
       <button (click)="removeArticle(book.bookObj.id)">remove</button>
     </div>
   </div>
