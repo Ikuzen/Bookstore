@@ -7,7 +7,7 @@
       <button (click)="bookService.removeArticle(book.bookObj.id)">remove</button>
     </div>
   </div>
-  <div>Total : {{bookService.totalPrice}} €</div>
+  <div class="total">Total : {{bookService.totalPrice}} €</div>
   <button>buy</button>
   <button (click) ="bookService.isExpended = false" *ngIf="bookService.isExpended" routerLink="">back</button>
 </div>

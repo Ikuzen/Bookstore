@@ -1,3 +1,9 @@
 .description{
-  border:black 2px double;
+  border: #D70D10 2px double;
+  color: whitesmoke;
+}
+
+.container{
+  color: whitesmoke;
+  font-family: 'Permanent Marker', cursive;
 }

@@ -1,7 +1,21 @@
 .product{
-  border: solid red 3px;
+  border: solid #D70D10 3px;
   padding: 10px;
+ 
 }
 .all-product{
   display: grid;
+  
+}
+
+.container{
+  color: #D70D10;
+  font-family: 'Londrina Shadow', cursive;
+  font-size: 30px;
+}
+
+.color{
+  color: #D70D10;
+  font-family: 'Londrina Shadow', cursive;
+  font-size: 30px;
 }
