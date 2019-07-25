@@ -32,3 +32,7 @@
   font-weight: bold;
   color: red;
 }
+a:hover{
+  color: blueviolet;
+  font-weight: bold;
+}
