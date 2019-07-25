@@ -33,7 +33,6 @@ export class DetailComponent implements OnInit {
           this.bookService.cartContent2[i].quantity++;
           isAdded = true;
           this.bookService.countFullPrice()
-
           break;
         }
     }
