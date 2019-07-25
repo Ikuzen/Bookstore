@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
 
     }
   }
-  discount(quantity:Number,price:Number):Number{ // if quantity > 10 : 10% redux !
+  discount(quantity:number,price:number):number{ // if quantity > 10 : 10% redux !
     if(quantity >= 10){
     return Math.round(price*0.90*100)/100;
     }

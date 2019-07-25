@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GoogleApiService } from './google-api.service';
-
+import {CartComponent} from '../cart/cart.component'
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +12,7 @@ export class BookService {
   }[] = [];
   totalPrice: number = 0;
   isExpended: boolean = false;
-  constructor(public googleApiService: GoogleApiService) { }
+  constructor(public googleApiService: GoogleApiService,private cartComponent: CartComponent ) { }
 
   addToCart(bookId: String): void { // add to cart with stored datas : no need to do a new api request
 
@@ -24,11 +24,8 @@ export class BookService {
         else {
           this.cartContent2[i].quantity++;
         }
-        if (this.googleApiService.data.items[i].saleInfo.listPrice) { // price increment
-          this.totalPrice += Math.round((+this.googleApiService.data.items[i].saleInfo.listPrice.amount.toFixed(2))*100)/100
-        } else {
-          this.totalPrice += +(10).toFixed(2);
-        }
+        this.cartComponent.countFullPrice()
+        
       }
     }
     console.log(this.cartContent2)

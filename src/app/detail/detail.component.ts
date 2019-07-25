@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleApiService } from '../services/google-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../services/book.service'
+import {CartComponent} from '../cart/cart.component'
 
 
 @Component({
@@ -11,7 +12,7 @@ import { BookService } from '../services/book.service'
 })
 export class DetailComponent implements OnInit {
   data: any;
-  constructor(public googleApiService: GoogleApiService, private route: ActivatedRoute, private bookService: BookService) { }
+  constructor(public googleApiService: GoogleApiService, private route: ActivatedRoute, private bookService: BookService, private cartComponent:CartComponent) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -32,23 +33,14 @@ export class DetailComponent implements OnInit {
         if (this.bookService.cartContent2[i].bookObj.id == this.data.id) {
           this.bookService.cartContent2[i].quantity++;
           isAdded = true;
-          if (this.data.saleInfo.listPrice) {
-            this.bookService.totalPrice += this.data.saleInfo.listPrice.amount;
-            this.bookService.totalPrice = Math.round(this.bookService.totalPrice * 100) / 100;
-          } else {
-            this.bookService.totalPrice += 10;
-          }
+          this.cartComponent.countFullPrice()
+
           break;
         }
     }
     if(!isAdded){
         this.bookService.cartContent2.push({ quantity: 1, bookObj: this.data });
-        if (this.data.saleInfo.listPrice) {
-          this.bookService.totalPrice +=  this.data.saleInfo.listPrice.amount;
-          this.bookService.totalPrice = Math.round(this.bookService.totalPrice * 100) / 100;
-        } else {
-          this.bookService.totalPrice += 10;
-        }
+        this.cartComponent.countFullPrice()
     }
   }
     console.log(this.data)
